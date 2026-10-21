@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101522">
+  <title>Gemini REST API System</title>
+  <link rel="icon" type="image/png" href="{{ url_for('icon') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script defer src="{{ url_for('static', filename='js/app.js') }}"></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="brand">
+      <img src="{{ url_for('icon') }}" alt="" class="brand-icon">
+      <div>
+        <p class="eyebrow">Generative AI</p>
+        <h1>Gemini REST API System</h1>
+      </div>
+    </header>
+
+    <section class="workspace" aria-labelledby="workspace-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Gemini prompt interface</p>
+          <h2 id="workspace-title">Ask Gemini</h2>
+        </div>
+        <span class="model-label">Powered by Gemini</span>
+      </div>
+
+      <form id="prompt-form">
+        <label for="prompt">Your prompt</label>
+        <textarea id="prompt" name="prompt" rows="8" placeholder="What would you like Gemini to help with?" required></textarea>
+
+        <div class="form-footer">
+          <div class="format-control">
+            <label for="response-format">Response format</label>
+            <select id="response-format" name="response_format">
+              <option value="text">Regular text</option>
+              <option value="json">JSON</option>
+            </select>
+          </div>
+          <button id="submit-button" type="submit">
+            <span class="button-label">Generate response</span>
+            <span class="spinner hidden" aria-hidden="true"></span>
+          </button>
+        </div>
+      </form>
+
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+
+      <section id="result-section" class="result-section hidden" aria-labelledby="result-title">
+        <div class="result-heading">
+          <h2 id="result-title">Response</h2>
+          <button id="copy-button" class="copy-button" type="button">Copy</button>
+        </div>
+        <pre id="result" tabindex="0"></pre>
+      </section>
+    </section>
+    <footer>Requests are sent securely from this server to the Gemini API. Your API key is not exposed in the browser.</footer>
+  </main>
+</body>
+</html>
